@@ -1,9 +1,12 @@
 import { useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import BentoFeatures from './components/BentoFeatures';
+import SilentProfiling from './components/SilentProfiling';
+import ClipboardIntelligence from './components/ClipboardIntelligence';
+import MultiAgentSwarm from './components/MultiAgentSwarm';
 import NightShift from './components/NightShift';
 import ModelFreedom from './components/ModelFreedom';
-import BentoFeatures from './components/BentoFeatures';
 import Pricing from './components/Pricing';
 import Footer from './components/Footer';
 import './index.css';
@@ -33,9 +36,12 @@ function App() {
       <Navbar />
       <main>
         <Hero />
+        <BentoFeatures />
+        <SilentProfiling />
+        <ClipboardIntelligence />
+        <MultiAgentSwarm />
         <NightShift />
         <ModelFreedom />
-        <BentoFeatures />
         <Pricing />
       </main>
       <Footer />

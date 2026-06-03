@@ -1,10 +1,11 @@
+import modelFreedomImg from '../assets/model_freedom.png';
 import './FeatureSection.css';
 
 export default function ModelFreedom() {
   return (
     <section id="model-freedom" className="feature-section container reverse">
       <div className="feature-visual reveal delay-200">
-        <img src="/model_freedom.png" alt="Model Freedom UI" className="mockup-img" />
+        <img src={modelFreedomImg} alt="Model Freedom UI" className="mockup-img" />
       </div>
 
       <div className="feature-content reveal">

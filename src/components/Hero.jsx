@@ -1,3 +1,4 @@
+import commandOsImg from '../assets/command_os.png';
 import './Hero.css';
 
 export default function Hero() {
@@ -24,7 +25,7 @@ export default function Hero() {
       </div>
       
       <div className="hero-image-wrapper reveal delay-300">
-        <img src="/command_os.png" alt="ARIA Command OS" className="hero-image" />
+        <img src={commandOsImg} alt="ARIA Command OS" className="hero-image" />
         <div className="image-glow"></div>
       </div>
     </section>

@@ -1,3 +1,4 @@
+import nightShiftImg from '../assets/night_shift.png';
 import './FeatureSection.css';
 
 export default function NightShift() {
@@ -18,7 +19,7 @@ export default function NightShift() {
       </div>
       
       <div className="feature-visual reveal delay-200">
-        <img src="/night_shift.png" alt="Night Shift UI" className="mockup-img" />
+        <img src={nightShiftImg} alt="Night Shift UI" className="mockup-img" />
       </div>
     </section>
   );
