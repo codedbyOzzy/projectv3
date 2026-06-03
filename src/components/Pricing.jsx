@@ -6,29 +6,26 @@ export default function Pricing() {
     {
       name: "FREE",
       price: "$0",
-      desc: "Günlük asistan ihtiyaçlarınız için temel AI katmanı.",
+      desc: "Temel kişisel işletim sistemi deneyimi.",
       features: [
-        "Temel Chat ve Komut Paleti",
+        "Command OS (Alt+Space)",
         "Sınırlı Web Arama (5/gün)",
-        "3 Aktif Hatırlatıcı / 20 Not",
-        "Temel Clipboard Aksiyonları",
-        "3 Eklenti Desteği"
+        "Conversation Threads (3)",
+        "Temel Clipboard Zekası"
       ],
-      cta: "Ücretsiz Başla",
-      popular: false
+      cta: "İndir"
     },
     {
       name: "PRO",
       price: "$12",
       period: "/ay",
-      desc: "Uzun görevleri devredip, iş akışınızı otomatikleştiren profesyonel sürüm.",
+      desc: "Gücü hisset. Uzun görevleri ARIA'ya devret.",
       features: [
-        "Sınırsız Web, Hatırlatıcı, Not",
-        "Night Shift (1 Paralel Görev)",
-        "Alt Ajanlar (Coder, Researcher...)",
-        "Workflow Builder",
-        "Voice Input / Output (TTS)",
-        "Gelişmiş Pano (Aksiyon Butonlu)"
+        "Night Shift 2.0 (Otonom Görevler)",
+        "Sınırsız Model Özgürlüğü (BYOK)",
+        "Knowledge Base & Bellek Kontrolü",
+        "Action Receipt (İşlem Şeffaflığı)",
+        "Workflow Builder"
       ],
       cta: "PRO'ya Yükselt",
       popular: true
@@ -36,32 +33,28 @@ export default function Pricing() {
     {
       name: "TEAM",
       price: "$39",
-      period: "/kullanıcı/ay",
-      desc: "Ekipler için ortak zeka, bilgi tabanı ve senkronizasyon.",
+      period: "/kullanıcı",
+      desc: "Ekipler için ortak zeka ve şirket RAG hafızası.",
       features: [
-        "Tüm PRO Özellikleri",
-        "Cross-Device Sync (Cihazlar Arası)",
-        "Night Shift (3 Paralel Görev)",
+        "Cross-Device Sync",
         "Paylaşılan Knowledge Base",
-        "Ortak Çalışma Alanı",
-        "Yönetici İzin Politikaları"
+        "Takım Workflows",
+        "Admin Denetim Paneli"
       ],
-      cta: "Ekiple İletişime Geç",
-      popular: false
+      cta: "İletişime Geç"
     }
   ];
 
   return (
     <section id="pricing" className="pricing container">
       <div className="section-header reveal">
-        <h2 className="section-title">Hedefinize Uygun Planlar</h2>
-        <p className="section-subtitle">Sadece bir sohbet robotu değil, işinizi devrettiğiniz bir çalışan kiralıyorsunuz.</p>
+        <h2 className="section-title text-gradient">Sade ve Şeffaf Planlar</h2>
       </div>
 
       <div className="pricing-grid">
         {tiers.map((tier, i) => (
-          <div key={i} className={`pricing-card glass-panel reveal delay-${i * 100} ${tier.popular ? 'popular' : ''}`}>
-            {tier.popular && <div className="popular-badge">En Çok Tercih Edilen</div>}
+          <div key={i} className={`pricing-card premium-card reveal delay-${i * 100} ${tier.popular ? 'popular' : ''}`}>
+            {tier.popular && <div className="popular-badge">Popüler</div>}
             <h3 className="tier-name">{tier.name}</h3>
             <div className="tier-price">
               <span className="amount">{tier.price}</span>
@@ -72,7 +65,7 @@ export default function Pricing() {
             <ul className="tier-features">
               {tier.features.map((f, j) => (
                 <li key={j}>
-                  <Check size={18} className="check-icon" />
+                  <Check size={16} className="check-icon" />
                   <span>{f}</span>
                 </li>
               ))}

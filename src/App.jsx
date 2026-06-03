@@ -1,8 +1,9 @@
 import { useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import Features from './components/Features';
-import Showcase from './components/Showcase';
+import NightShift from './components/NightShift';
+import ModelFreedom from './components/ModelFreedom';
+import BentoFeatures from './components/BentoFeatures';
 import Pricing from './components/Pricing';
 import Footer from './components/Footer';
 import './index.css';
@@ -17,7 +18,7 @@ function App() {
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
     );
 
     document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
@@ -27,14 +28,14 @@ function App() {
 
   return (
     <>
-      <div className="ambient-orb orb-1"></div>
-      <div className="ambient-orb orb-2"></div>
+      <div className="glow-bg"></div>
       
       <Navbar />
       <main>
         <Hero />
-        <Features />
-        <Showcase />
+        <NightShift />
+        <ModelFreedom />
+        <BentoFeatures />
         <Pricing />
       </main>
       <Footer />
