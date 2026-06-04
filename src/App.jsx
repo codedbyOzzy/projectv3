@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import {
   Moon, Database, GitPullRequest, Clipboard, Shuffle, Mail,
   Eye, FileText, Globe, CheckCircle,
-  Clock, Cpu, Zap,
+  Clock, Cpu, Zap, Workflow,
   ShieldCheck, MessageSquare, Search,
   FolderOpen, Mic, Terminal, Network,
   ChevronRight, BellRing, Code2, BookOpen, SlidersHorizontal,
