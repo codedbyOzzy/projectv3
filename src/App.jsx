@@ -386,14 +386,20 @@ function Hero() {
     <section className="hero">
       <div className="hero-gradient" />
       <div className="wrap" style={{position:'relative',zIndex:1}}>
-        <div className="hero-eyebrow"><span className="hero-eyebrow-dot" />{t.eyebrow}</div>
+        <a href="#closing-cta" className="hero-raycast-badge">
+          <div className="rb-glow"></div>
+          <div className="rb-content">
+            <span className="rb-left"><Sparkles size={14} style={{marginRight: 6, color: '#ff6b6b'}} />{t.eyebrow}</span>
+            <span className="rb-divider"></span>
+            <span className="rb-right">{t.releaseLabel} {t.releaseSuffix} <ArrowRight size={14} style={{marginLeft: 6}}/></span>
+          </div>
+        </a>
         <h1>{t.heroH1.split('\n').map((line, i) => <span key={i}>{line}<br/></span>)}</h1>
         <p className="hero-sub">{t.heroSub}</p>
         <div className="hero-actions">
           <a href="#features" className="btn btn-solid"><Sparkles size={15} />{t.heroCtaScroll}</a>
           <a href="#features" className="btn btn-ghost">{t.heroFeatures} <ArrowRight size={14} style={{marginLeft:4}} /></a>
         </div>
-        <div className="release-badge"><Clock size={13} /><span>{t.releaseLabel} <strong>2026 Q4</strong> — {t.releaseSuffix}</span></div>
 
         <div className="command-demo">
           <div className="command-demo-outer">
