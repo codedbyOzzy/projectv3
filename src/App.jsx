@@ -887,18 +887,14 @@ function Pricing() {
         <div className="pricing-grid">
           {t.pricingTiers.map((tier,i) => (
             <div key={i} className={`pricing-card${tier.featured?' featured':''} fade-up`} style={{transitionDelay:i*0.1+'s'}}>
-              <div className="pc-glow-wrap"><div className="pc-glow"></div></div>
-              <div className="pc-inner-bg"></div>
-              {tier.featured && <div className="featured-badge" style={{zIndex: 3}}>{t.lang==='tr'?'Önerilen':'Recommended'}</div>}
-              <div className="pricing-card-content">
-                <div className="tier-name">{tier.name}</div>
-                <div className="tier-price" style={tier.price==='Yakında'||tier.price==='Soon'?{fontSize:26,paddingTop:8}:{}}>{tier.price}</div>
-                <div className="tier-period">{tier.period}</div>
-                <div className="tier-desc">{tier.desc}</div>
-                <ul className="tier-feats">{tier.feats.map((f,j) => <li key={j}>{f}</li>)}</ul>
-                <div className="tier-cta-label">
-                  <Clock size={12} style={{marginRight:6}} />{tier.cta}
-                </div>
+              {tier.featured && <div className="featured-badge">{t.lang==='tr'?'Önerilen':'Recommended'}</div>}
+              <div className="tier-name">{tier.name}</div>
+              <div className="tier-price" style={tier.price==='Yakında'||tier.price==='Soon'?{fontSize:26,paddingTop:8}:{}}>{tier.price}</div>
+              <div className="tier-period">{tier.period}</div>
+              <div className="tier-desc">{tier.desc}</div>
+              <ul className="tier-feats">{tier.feats.map((f,j) => <li key={j}>{f}</li>)}</ul>
+              <div className="tier-cta-label">
+                <Clock size={12} style={{marginRight:6}} />{tier.cta}
               </div>
             </div>
           ))}

@@ -429,22 +429,23 @@ section { padding: 120px 0; }
 .pricing h2 { font-size: clamp(26px, 4vw, 42px); font-weight: 700; letter-spacing: -0.03em; margin-bottom: 12px; }
 .pricing-sub { font-size: 16px; color: var(--text2); margin-bottom: 60px; }
 .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; text-align: left; }
-.pricing-card { position: relative; border-radius: var(--radius); transition: transform 0.3s; }
-.pricing-card:hover { transform: translateY(-4px); }
-.pc-glow-wrap { position: absolute; inset: 0; border-radius: inherit; overflow: hidden; z-index: 0; border: 1px solid var(--border); transition: border-color 0.3s; }
-.pricing-card:hover .pc-glow-wrap { border-color: rgba(255,255,255,0.1); }
-.pricing-card.featured .pc-glow-wrap { border-color: rgba(255,255,255,0.1); }
-.pricing-card.featured:hover .pc-glow-wrap { border-color: rgba(255,255,255,0.2); }
+.pricing-card { padding: 32px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); display: flex; flex-direction: column; transition: border-color 0.3s, transform 0.3s; position: relative; overflow: hidden; }
+.pricing-card:hover { transform: translateY(-4px); border-color: var(--border-hover); }
+.pricing-card.featured { border-color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.04); }
+.pricing-card.featured:hover { border-color: rgba(255,255,255,0.45); }
 
-.pc-glow { position: absolute; left: 50%; top: 50%; width: 200%; height: 200%; background: conic-gradient(from 0deg, transparent 0%, transparent 75%, rgba(255,59,59,0.8) 95%, rgba(255,200,200,1) 100%); transform-origin: 0 0; animation: rb-spin 3s linear infinite; margin-left: -100%; margin-top: -100%; opacity: 0; transition: opacity 0.3s; }
-.pricing-card:hover .pc-glow { opacity: 1; }
-.pricing-card.featured .pc-glow { opacity: 1; }
+.pricing-card::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%; width: 200%; height: 200%;
+  background: conic-gradient(from 150deg, transparent 0%, transparent 10%, rgba(30, 58, 138, 0.3) 15%, rgba(14, 165, 233, 0.05) 20%, transparent 25%);
+  pointer-events: none;
+  z-index: 0;
+}
 
-.pc-inner-bg { position: absolute; inset: 1px; background: #121212; border-radius: calc(var(--radius) - 1px); z-index: 1; }
-.pricing-card.featured .pc-inner-bg { background: #0a0a0a; } /* Darker to let border shine */
-.pricing-card-content { position: relative; z-index: 2; padding: 32px; display: flex; flex-direction: column; height: 100%; }
+.tier-name, .tier-price, .tier-period, .tier-desc, .tier-feats, .tier-cta-label { position: relative; z-index: 1; }
 
-.featured-badge { position: absolute; top: -11px; left: 50%; transform: translateX(-50%); background: #fff; color: #000; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 12px; border-radius: 100px; }
+.featured-badge { position: absolute; top: 0; left: 50%; transform: translate(-50%, -50%); background: #fff; color: #000; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 12px; border-radius: 100px; z-index: 2; }
 .tier-name { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text3); margin-bottom: 16px; }
 .tier-price { font-size: 48px; font-weight: 700; letter-spacing: -0.04em; color: #fff; margin-bottom: 4px; line-height: 1; }
 .tier-price .currency { font-size: 22px; vertical-align: super; font-weight: 500; }
