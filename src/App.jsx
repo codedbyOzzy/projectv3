@@ -306,7 +306,7 @@ const T = {
 };
 
 // ── Language Context ──────────────────────────────────────────────────────────
-const LangCtx = createContext({ lang: 'tr', t: T.tr, setLang: () => {} });
+const LangCtx = createContext({ lang: 'en', t: T.en, setLang: () => {} });
 const useLang = () => useContext(LangCtx);
 
 // ── ARIA Logo ─────────────────────────────────────────────────────────────────
@@ -933,7 +933,7 @@ function useReveal() {
 
 // ── App ───────────────────────────────────────────────────────────────────────
 export default function App() {
-  const [lang, setLang] = useState('tr');
+  const [lang, setLang] = useState('en');
   const t = { ...T[lang], lang };
   useReveal();
   return (
