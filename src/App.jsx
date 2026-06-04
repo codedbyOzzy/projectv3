@@ -12,6 +12,12 @@ import {
 } from 'lucide-react';
 import './index.css';
 
+import imgWidget from './assets/screenshots/widget.png';
+import imgCommand from './assets/screenshots/command_bar.png';
+import imgChat from './assets/screenshots/chat.png';
+import imgNightShift from './assets/screenshots/night_shift.png';
+import imgWorkflows from './assets/screenshots/workflows.png';
+
 // ── i18n ──────────────────────────────────────────────────────────────────────
 const T = {
   tr: {
@@ -33,6 +39,9 @@ const T = {
     stat2n: 'Özgür',    stat2l: 'Model Seçimi (BYOK)',
     stat3n: 'Anında',   stat3l: 'Düşünce Hızında Yanıt',
     stat4n: '%100',     stat4l: 'Sizin Kontrolünüzde',
+    showcaseH: 'Arayüzü Keşfedin',
+    showcaseSub: 'Karanlık, minimalist ve pürüzsüz. Sadece işinize odaklanmanız için özel olarak tasarlandı.',
+    showcaseTabs: ['Command Bar', 'Chat', 'Night Shift', 'Workflows', 'Widget'],
     manifestoH: 'Sohbet etmekle yetinmeyin.\nBilgisayarınızı yönetin.',
     manifestoP: "Chatbot'lar sorulara cevap verir. ARIA ise gerçekten iş yapar — dosya okur, kod yazar, API çağırır, gece görevler kurar ve sabah size rapor sunar.",
     manifestoCta: 'Nasıl Çalışır?',
@@ -183,6 +192,9 @@ const T = {
     stat2n: 'Freedom',   stat2l: 'Model Selection (BYOK)',
     stat3n: 'Instant',   stat3l: 'Thought-speed Responses',
     stat4n: '100%',      stat4l: 'In Your Control',
+    showcaseH: 'A Look at ARIA',
+    showcaseSub: 'Dark, minimalist, and frictionless. Designed to stay out of your way and let you focus.',
+    showcaseTabs: ['Command Bar', 'Chat', 'Night Shift', 'Workflows', 'Widget'],
     manifestoH: 'Stop chatting.\nStart commanding.',
     manifestoP: "Chatbots answer questions. ARIA actually gets things done — reads files, writes code, calls APIs, runs overnight tasks, and hands you a report in the morning.",
     manifestoCta: 'See How It Works',
@@ -445,6 +457,43 @@ function Stats() {
         ))}
       </div>
     </div>
+  );
+}
+
+// ── Showcase ──────────────────────────────────────────────────────────────────
+function Showcase() {
+  const { t } = useLang();
+  const [activeTab, setActiveTab] = useState(0);
+  const images = [imgCommand, imgChat, imgNightShift, imgWorkflows, imgWidget];
+
+  return (
+    <section className="showcase" id="showcase">
+      <div className="wrap">
+        <div className="showcase-header fade-up">
+          <h2>{t.showcaseH}</h2>
+          <p>{t.showcaseSub}</p>
+        </div>
+        
+        <div className="showcase-tabs fade-up">
+          {t.showcaseTabs.map((tab, i) => (
+            <button 
+              key={i} 
+              className={`sc-tab ${activeTab === i ? 'active' : ''}`}
+              onClick={() => setActiveTab(i)}
+            >
+              {tab}
+            </button>
+          ))}
+        </div>
+
+        <div className="showcase-window-wrapper fade-up">
+           <div className="sc-window">
+             <img src={images[activeTab]} alt="ARIA Interface" />
+           </div>
+           <div className="sc-glow" />
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -948,6 +997,7 @@ export default function App() {
       <main>
         <Hero />
         <Stats />
+        <Showcase />
         <Manifesto />
         <FeatureScroll />
         <FeatureBlocks />
