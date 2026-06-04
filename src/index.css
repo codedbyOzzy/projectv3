@@ -429,7 +429,7 @@ section { padding: 120px 0; }
 .pricing h2 { font-size: clamp(26px, 4vw, 42px); font-weight: 700; letter-spacing: -0.03em; margin-bottom: 12px; }
 .pricing-sub { font-size: 16px; color: var(--text2); margin-bottom: 60px; }
 .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; text-align: left; }
-.pricing-card { padding: 32px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); display: flex; flex-direction: column; transition: border-color 0.3s, transform 0.3s; position: relative; overflow: hidden; }
+.pricing-card { padding: 32px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); display: flex; flex-direction: column; transition: border-color 0.3s, transform 0.3s; position: relative; }
 .pricing-card:hover { transform: translateY(-4px); border-color: var(--border-hover); }
 .pricing-card.featured { border-color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.04); }
 .pricing-card.featured:hover { border-color: rgba(255,255,255,0.45); }
@@ -441,6 +441,7 @@ section { padding: 120px 0; }
   background: conic-gradient(from 90deg, transparent 0%, transparent 35%, rgba(30, 58, 138, 0.8) 40%, rgba(56, 189, 248, 0.5) 50%, rgba(30, 58, 138, 0.8) 60%, transparent 65%);
   pointer-events: none;
   z-index: 0;
+  clip-path: inset(25% round var(--radius));
 }
 
 .tier-name, .tier-price, .tier-period, .tier-desc, .tier-feats, .tier-cta-label { position: relative; z-index: 1; }
