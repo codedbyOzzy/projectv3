@@ -432,16 +432,16 @@ section { padding: 120px 0; }
 .pricing-card { position: relative; border-radius: var(--radius); transition: transform 0.3s; }
 .pricing-card:hover { transform: translateY(-4px); }
 .pc-glow-wrap { position: absolute; inset: 0; border-radius: inherit; overflow: hidden; z-index: 0; border: 1px solid var(--border); transition: border-color 0.3s; }
-.pricing-card:hover .pc-glow-wrap { border-color: var(--border-hover); }
-.pricing-card.featured .pc-glow-wrap { border-color: rgba(255,255,255,0.25); }
-.pricing-card.featured:hover .pc-glow-wrap { border-color: rgba(255,255,255,0.45); }
+.pricing-card:hover .pc-glow-wrap { border-color: rgba(255,255,255,0.1); }
+.pricing-card.featured .pc-glow-wrap { border-color: rgba(255,255,255,0.1); }
+.pricing-card.featured:hover .pc-glow-wrap { border-color: rgba(255,255,255,0.2); }
 
-.pc-glow { position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: conic-gradient(from 0deg, transparent 0%, transparent 35%, rgba(255,70,70,0.6) 40%, #ff3b3b 50%, rgba(255,70,70,0.6) 60%, transparent 65%); animation: rb-spin 4s linear infinite; opacity: 0; transition: opacity 0.3s; }
-.pricing-card:hover .pc-glow { opacity: 0.3; }
+.pc-glow { position: absolute; left: 50%; top: 50%; width: 200%; height: 200%; background: conic-gradient(from 0deg, transparent 0%, transparent 75%, rgba(255,59,59,0.8) 95%, rgba(255,200,200,1) 100%); transform-origin: 0 0; animation: rb-spin 3s linear infinite; margin-left: -100%; margin-top: -100%; opacity: 0; transition: opacity 0.3s; }
+.pricing-card:hover .pc-glow { opacity: 1; }
 .pricing-card.featured .pc-glow { opacity: 1; }
 
 .pc-inner-bg { position: absolute; inset: 1px; background: var(--surface); border-radius: calc(var(--radius) - 1px); z-index: 1; }
-.pricing-card.featured .pc-inner-bg { background: rgba(15,15,15,1); } /* Darker to let border shine */
+.pricing-card.featured .pc-inner-bg { background: rgba(12,12,12,1); } /* Darker to let border shine */
 .pricing-card-content { position: relative; z-index: 2; padding: 32px; display: flex; flex-direction: column; height: 100%; }
 
 .featured-badge { position: absolute; top: -11px; left: 50%; transform: translateX(-50%); background: #fff; color: #000; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 12px; border-radius: 100px; }
