@@ -80,7 +80,7 @@ const T = {
     intCats: [
       { label: 'Geliştirici', items: ['GitHub','VS Code','Terminal','Docker','GitLab','Postman'] },
       { label: 'Üretkenlik', items: ['Gmail','Google Calendar','Notion','Obsidian','Slack','Linear'] },
-      { label: 'AI & Model', items: ['OpenAI','Anthropic','Groq','Ollama (Yerel)','Gemini','Mistral'] },
+      { label: 'AI & Model', items: ['OpenAI','Anthropic','Groq','Ollama (Yerel)','Gemini','MiniMax'] },
       { label: 'Sistem', items: ['Dosya Sistemi','Clipboard','Sistem Bildirimleri','Windows Search','PowerShell','Registry'] },
     ],
 
@@ -227,7 +227,7 @@ const T = {
     intCats: [
       { label: 'Developer', items: ['GitHub','VS Code','Terminal','Docker','GitLab','Postman'] },
       { label: 'Productivity', items: ['Gmail','Google Calendar','Notion','Obsidian','Slack','Linear'] },
-      { label: 'AI & Models', items: ['OpenAI','Anthropic','Groq','Ollama (Local)','Gemini','Mistral'] },
+      { label: 'AI & Models', items: ['OpenAI','Anthropic','Groq','Ollama (Local)','Gemini','MiniMax'] },
       { label: 'System', items: ['File System','Clipboard','System Notifications','Windows Search','PowerShell','Registry'] },
     ],
 
