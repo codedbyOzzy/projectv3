@@ -719,18 +719,18 @@ function IntegrationsSection() {
 // ── Testimonials ──────────────────────────────────────────────────────────────
 const TESTIMONIALS_TR = [
   { quote: 'Night Shift özelliği olmasa inanmam zor olurdu. Gece 02\'de kapatıp yatıyorum, sabah uyandığımda rakip analizi hazır. Bu kadar basit anlatayım.', name: 'Burak A.', role: 'Backend Developer · İstanbul' },
-  { quote: 'Clipboard Intelligence\'ı ilk gördüğümde "bu çok basit bir şey" dedim. Bir haftadır kullanıyorum, terminaldeki her hata logunu kopyaladığımda ARIA zaten ekranımda. Refleks oldu.', name: 'Zeynep K.', role: 'Data Scientist · Ankara' },
+  { quote: 'Sıradan bir kullanıcıyım ama ARIA sayesinde bilgisayarıma hükmediyorum. Dosya bulma ve internetten araştırma yapma hızı inanılmaz. Adeta kişisel asistanım oldu.', name: 'Zeynep K.', role: 'Üniversite Öğrencisi · Ankara' },
   { quote: 'BYOK desteği oyun değiştirici. Anthropic anahtarımı ekledim, şirkete ait verileri yerel Ollama\'ya veriyorum. Güvenlik ekibi de mutlu, ben de.', name: 'Mert D.', role: 'CTO · SaaS Startup, İzmir' },
-  { quote: 'Action Receipt olmasaydı bu kadar güvenmezdim. Her şeyin kayıtlı olduğunu görmek, hangi API\'ya istek gittiğini bilmek — bu şeffaflık başka hiçbir araçta yok.', name: 'Selin A.', role: 'AI Araştırmacısı · ODTÜ' },
+  { quote: 'Action Receipt olmasaydı arka planda ne döndüğünü anlamazdım. Her şeyin şeffaf olması, projelerimde kodun nasıl çalıştığını anlamamı çok hızlandırdı.', name: 'Selin A.', role: 'Yazılım Mühendisliği Öğrencisi · ODTÜ' },
   { quote: 'Multi-agent swarm\'ı test ettim: "şu proje için teknik döküman hazırla" dedim. 18 dakikada 12 sayfalık döküman çıktı. Normalde bunu yazmak günümü alırdı.', name: 'Emre Y.', role: 'Lead Engineer · Fintech' },
-  { quote: 'Türkçe komutlara verdiği yanıtların kalitesi beni şaşırttı. Çoğu AI aracında Türkçe "yeterince iyi" olur. ARIA\'da ana dil gibi hissettiriyor.', name: 'Ayşe T.', role: 'Ürün Müdürü · E-ticaret' },
+  { quote: 'Türkçe komutlara verdiği yanıtların kalitesi beni şaşırttı. AI araçlarının çoğunda Türkçe "idare eder" seviyesindeyken ARIA sanki ana dili gibi konuşuyor.', name: 'Ayşe T.', role: 'AI Meraklısı & İçerik Üreticisi' },
 ];
 const TESTIMONIALS_EN = [
   { quote: "Night Shift is the only reason I leave my laptop on overnight now. Queued 5 research tasks before bed, woke up to finished reports. My mornings are completely different.", name: 'Marcus W.', role: 'Senior Software Engineer · Berlin' },
-  { quote: "The model switching is seamless. I use Private mode for client code, Fast mode for quick lookups, and Best mode when I need Claude-level reasoning. All from the same shortcut.", name: 'Sarah C.', role: 'Product Manager · San Francisco' },
+  { quote: "The model switching is a lifesaver for my university projects. I use Fast mode for quick lookups, and Best mode when I need Claude-level reasoning for complex assignments.", name: 'Sarah C.', role: 'Computer Science Student · Stanford' },
   { quote: "I was skeptical about the clipboard detection. Two weeks in — I genuinely miss it when I'm on another machine. It just becomes part of how you code.", name: "Ryan O'B.", role: 'Full-Stack Developer · Dublin' },
   { quote: "The Action Receipt transparency feature alone sets this apart from every other AI tool I've used. I know exactly what's happening under the hood at all times.", name: 'Alex R.', role: 'DevOps Engineer · Madrid' },
-  { quote: "We tested this in our team — shared Knowledge Base is the real differentiator. Everyone uses the same context. No more re-explaining the codebase to every AI session.", name: 'Lena M.', role: 'Engineering Lead · Munich' },
+  { quote: "We tested this on a weekend project — shared Knowledge Base is the real deal. My friend and I use the same context without having to re-explain the codebase.", name: 'Lena M.', role: 'Indie Hacker & AI Enthusiast' },
   { quote: "Ran a multi-agent research task on a competitor landscape. Router split it into 6 subtasks, agents ran in parallel. Got back a structured report in under 20 minutes.", name: 'James P.', role: 'AI Researcher · Singapore' },
 ];
 const T_ICONS_VISUAL = [Moon, Clipboard, ShieldCheck, Eye, Code2, Search, Database, Shuffle, Network, Zap, FileText, Globe];
