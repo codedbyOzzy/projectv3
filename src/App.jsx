@@ -17,11 +17,13 @@ import imgCommand from './assets/screenshots/command_bar.png';
 import imgChat from './assets/screenshots/chat.png';
 import imgNightShift from './assets/screenshots/night_shift.png';
 import imgWorkflows from './assets/screenshots/workflows.png';
+import imgKazePlayer from './assets/screenshots/kazeplayer.jpg';
 
 // ── i18n ──────────────────────────────────────────────────────────────────────
 const T = {
   tr: {
     navFeatures: 'Özellikler',
+    navPartners: 'Partnerler',
     navNightShift: 'Night Shift 2.0',
     navModel: 'Model Özgürlüğü',
     navPrivacy: 'Gizlilik',
@@ -46,6 +48,9 @@ const T = {
     manifestoP: "Chatbot'lar sorulara cevap verir. ARIA ise gerçekten iş yapar — dosya okur, kod yazar, API çağırır, gece görevler kurar ve sabah size rapor sunar.",
     manifestoCta: 'Nasıl Çalışır?',
     scrollLabel: 'Bir kısayol. Sonsuz güç.',
+    partnersBadge: 'İŞ ORTAKLIĞI',
+    partnersH: ['ARIA × ', 'KazePlayer', ' Entegrasyonu'],
+    partnersP: "Resmi iş ortağımız KazePlay ARIA'ya gömülü olarak geldi. Kullanıcılar anime içeriklerine ayrı bir tarayıcı veya uygulama açmadan, doğrudan ARIA içinden erişebiliyor. KazePlay × ARIA entegrasyonu sayesinde platform ARIA'nın içinde sorunsuz çalışıyor — partnerliğimizin ilk somut ürünü.",
 
     // Feature blocks
     tBlock1Tag: 'Şeffaflık',
@@ -175,6 +180,7 @@ const T = {
 
   en: {
     navFeatures: 'Features',
+    navPartners: 'Partners',
     navNightShift: 'Night Shift 2.0',
     navModel: 'Model Freedom',
     navPrivacy: 'Privacy',
@@ -199,6 +205,9 @@ const T = {
     manifestoP: "Chatbots answer questions. ARIA actually gets things done — reads files, writes code, calls APIs, runs overnight tasks, and hands you a report in the morning.",
     manifestoCta: 'See How It Works',
     scrollLabel: 'One shortcut. Infinite power.',
+    partnersBadge: 'PARTNERSHIP',
+    partnersH: ['ARIA × ', 'KazePlayer', ' Integration'],
+    partnersP: 'Our official partner KazePlay comes embedded inside ARIA. Users can access anime content directly within ARIA, without opening a separate browser or app. Thanks to the KazePlay × ARIA integration, the platform works seamlessly inside ARIA — the first concrete product of our partnership.',
 
     tBlock1Tag: 'Transparency',
     tBlock1H: ['See every ', 'step', '.'],
@@ -349,6 +358,7 @@ function Navbar({ lang, setLang }) {
         <a href="#" className="nav-logo"><AriaLogo size={22} />ARIA</a>
         <div className="nav-links">
           <a href="#features">{t.navFeatures}</a>
+          <a href="#partners">{t.navPartners}</a>
           <a href="#night-shift">{t.navNightShift}</a>
           <a href="#proactive">{t.navModel}</a>
           <a href="#privacy">{t.navPrivacy}</a>
@@ -507,6 +517,41 @@ function Manifesto() {
           <h2>{t.manifestoH.split('\n').map((l,i)=><span key={i}>{l}<br/></span>)}</h2>
           <p>{t.manifestoP}</p>
           <a href="#features" className="btn btn-ghost">{t.manifestoCta} <ChevronRight size={14} style={{marginLeft:4}} /></a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ── Partners Section ──────────────────────────────────────────────────────────
+function PartnersSection() {
+  const { t } = useLang();
+  return (
+    <section className="partners-section" id="partners">
+      <div className="wrap">
+        <div className="partners-grid">
+          <div className="partners-text fade-up">
+            <div className="feature-tag">{t.partnersBadge}</div>
+            <h2>
+              {t.partnersH[0]}
+              <em>{t.partnersH[1]}</em>
+              {t.partnersH[2]}
+            </h2>
+            <p className="partners-desc">{t.partnersP}</p>
+            <div className="partners-meta">
+              <span className="meta-badge"><Sparkles size={12} /> {t.lang === 'tr' ? 'İlk Somut Ürün' : 'First Concrete Product'}</span>
+              <span className="meta-badge"><Cpu size={12} /> {t.lang === 'tr' ? 'Kusursuz Entegrasyon' : 'Seamless Integration'}</span>
+            </div>
+          </div>
+          
+          <div className="partners-visual fade-up delay-2">
+            <div className="partners-window-wrapper">
+              <div className="partners-window">
+                <img src={imgKazePlayer} alt="ARIA x KazePlayer Integration" />
+              </div>
+              <div className="partners-glow" />
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -999,6 +1044,7 @@ export default function App() {
         <Stats />
         <Showcase />
         <Manifesto />
+        <PartnersSection />
         <FeatureScroll />
         <FeatureBlocks />
         <ProactiveSection />
