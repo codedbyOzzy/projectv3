@@ -8,7 +8,10 @@ import {
   ChevronRight, Code2, BookOpen, SlidersHorizontal,
   UserCog, ArrowRight, Sparkles, Activity, Server, GitBranch,
   Languages, Lightbulb, PlugZap, TrendingUp, BrainCircuit,
-  Link2, PocketKnife, Repeat2, Bot
+  Link2, PocketKnife, Repeat2, Bot,
+  MessageCircle, Send, Radio, Tv, CalendarDays, HeartPulse,
+  PanelRight, History, Music2, Gamepad2, ShieldAlert, MonitorPlay,
+  SquarePen, Layers, MessagesSquare, Save
 } from 'lucide-react';
 import './index.css';
 
@@ -18,6 +21,7 @@ import imgChat from './assets/screenshots/chat.png';
 import imgNightShift from './assets/screenshots/night_shift.png';
 import imgWorkflows from './assets/screenshots/workflows.png';
 import imgKazePlayer from './assets/screenshots/kazeplayer.jpg';
+import imgWebAssistant from './assets/screenshots/aria_web_assistant.png';
 
 // ── i18n ──────────────────────────────────────────────────────────────────────
 const T = {
@@ -37,13 +41,23 @@ const T = {
     releaseLabel: 'Tahmini Çıkış:',
     releaseSuffix: 'Windows 10 / 11',
     demoSuggestions: 'Öneriler',
-    stat1n: 'Sınırsız', stat1l: 'Araç ve Entegrasyon',
+    stat1n: '18+',      stat1l: 'Yerleşik Araç',
     stat2n: 'Özgür',    stat2l: 'Model Seçimi (BYOK)',
-    stat3n: 'Anında',   stat3l: 'Düşünce Hızında Yanıt',
-    stat4n: '%100',     stat4l: 'Sizin Kontrolünüzde',
+    stat3n: '%100',     stat3l: 'Yerel & Offline (Ollama)',
+    stat4n: 'TR + EN',  stat4l: 'Tam Çift Dil Destek',
+    hlTag: 'ÖNE ÇIKANLAR',
+    hlH: ['Bir asistandan ', 'fazlası', '.'],
+    hlCards: [
+      { title:'ARIA Intelligence', desc:"Web sayfasında, WhatsApp ve Telegram'da yapılandırılmış zekâ — bulutta ya da tamamen cihazında.", href:'#ask-aria' },
+      { title:'Canvas', desc:'Kod ve dokümanları sohbetin yanında canlı, düzenlenebilir bir tuvalde birlikte üret.', href:'#canvas' },
+      { title:'Night Shift 2.0', desc:'Siz uyurken otonom görev zincirleri çalışır; sabah rapor hazır.', href:'#night-shift' },
+      { title:'Model Özgürlüğü', desc:'BYOK · Private/Fast/Best/Cheap modları · yerel Ollama tek tuşla.', href:'#model' },
+      { title:'Multi-Agent Swarm', desc:'Router görevi böler, uzman ajanlara dağıtır.', href:'#features' },
+      { title:'Proaktif Zeka', desc:'Sen sormadan bağlamı analiz eder, önceden harekete geçer.', href:'#proactive' },
+    ],
     showcaseH: 'Arayüzü Keşfedin',
     showcaseSub: 'Karanlık, minimalist ve pürüzsüz. Sadece işinize odaklanmanız için özel olarak tasarlandı.',
-    showcaseTabs: ['Command Bar', 'Chat', 'Night Shift', 'Workflows', 'Widget'],
+    showcaseTabs: ['Komut Çubuğu', 'Sohbet', 'Night Shift', 'Rutinler', 'Widget'],
     manifestoH: 'Sohbet etmekle yetinmeyin.\nBilgisayarınızı yönetin.',
     manifestoP: "Chatbot'lar sorulara cevap verir. ARIA ise gerçekten iş yapar — dosya okur, kod yazar, API çağırır, gece görevler kurar ve sabah size rapor sunar.",
     manifestoCta: 'Nasıl Çalışır?',
@@ -51,6 +65,19 @@ const T = {
     partnersBadge: 'İŞ ORTAKLIĞI',
     partnersH: ['ARIA × ', 'KazePlayer', ' Entegrasyonu'],
     partnersP: "Resmi iş ortağımız KazePlay ARIA'ya gömülü olarak geldi. Kullanıcılar anime içeriklerine ayrı bir tarayıcı veya uygulama açmadan, doğrudan ARIA içinden erişebiliyor. KazePlay × ARIA entegrasyonu sayesinde platform ARIA'nın içinde sorunsuz çalışıyor — partnerliğimizin ilk somut ürünü.",
+
+    // Ask ARIA — Intelligence
+    aiOver: 'TANIŞTIRIYORUZ',
+    aiTitle: 'ARIA Intelligence',
+    aiSub: 'Bir kısayol uzaklığında zekâ. Web sayfasında, WhatsApp\'ta, Telegram\'da — seçtiğin içeriği ARIA anlar, yapılandırır ve yanıtlar. Bulutta ya da tamamen cihazında.',
+    aiModeCloud: 'Bulut · Groq',
+    aiModeLocal: 'Cihazda · Ollama',
+    aiShotCaption: 'Ask ARIA — herhangi bir web sayfasında yapılandırılmış özet',
+    aiCards: [
+      { title: "Web'de yapılandırılmış zekâ", desc: 'Herhangi bir sayfada Ask ARIA. LLM, içeriği Genel Bakış, Önemli Noktalar ve Zaman Çizelgesi olan yapılandırılmış bir karta dönüştürür — ham metin değil, anlam.' },
+      { title: 'WhatsApp üzerinde', desc: "Sohbeti gönderene göre okur, okunmamışları özetler, yanıt taslağı üretir. Sen onayla, ARIA göndersin." },
+      { title: 'Telegram üzerinde', desc: "Aynı paylaşılan Ask ARIA katmanı Telegram'da da çalışır. Bağlamı kaybetmeden konuşmaları yönet." },
+    ],
 
     // Feature blocks
     tBlock1Tag: 'Şeffaflık',
@@ -73,6 +100,12 @@ const T = {
     tBlock5H: ['Tek bot değil, ', 'uzmanlar ekibi', '.'],
     tBlock5P: 'Router Agent karmaşık görevleri parçalar ve Coder, Researcher, Writer gibi uzmanlara dağıtır. Swarm Intelligence ile büyük projeleri insan ekibi disiplininde yönetin.',
     tBlock5Pills: ['Router Agent','Coder Agent','Researcher Agent','Writer Agent'],
+    tBlock6Tag: 'Canvas · Yeni',
+    tBlock6H: ['Sohbet değil, ', 'birlikte üretim', '.'],
+    tBlock6P: "ARIA uzun bir kod ya da doküman ürettiğinde balona sıkışmaz — sohbetin yanında canlı, düzenlenebilir bir tuval açar. 'Şu fonksiyonu değiştir' de, yerinde güncellesin. Versiyon geçmişi, geri alma ve tek tuşla diske kaydetme dahil.",
+    tBlock6Pills: ['Canlı Tuval','Yerinde Revize','Versiyon Geçmişi','Diske Kaydet'],
+    canvasVisualTitle: 'Canvas — todo_list.py',
+    canvasRevisePlaceholder: "ARIA'dan değişiklik iste…",
 
     // Proactive Intelligence section
     proTag: 'Proaktif Zeka',
@@ -88,14 +121,15 @@ const T = {
     ],
 
     // Integrations section
-    intTag: 'Entegrasyonlar',
-    intH: ['Her araçla ', 'konuşur', '.'],
-    intP: 'ARIA, günlük kullandığınız araçlara doğrudan bağlanır. Sekmeler arasında geçiş yapmadan, tek bir pencereden her şeyi yönetin.',
+    intTag: 'Bağlı Dünya',
+    intH: ['Tüm dünyanız, ', 'tek pencerede', '.'],
+    intP: 'ARIA mesajlaşmadan medyaya, koddan modellere kadar günlük kullandığınız araçlara doğrudan bağlanır. Sekmeler arasında gezinmeden, ayrı uygulamalar açmadan her şeyi ARIA içinden yönetin.',
     intCats: [
-      { label: 'Geliştirici', items: ['GitHub','VS Code','Terminal','Docker','GitLab','Postman'] },
-      { label: 'Üretkenlik', items: ['Gmail','Google Calendar','Notion','Obsidian','Slack','Linear'] },
-      { label: 'AI & Model', items: ['OpenAI','Anthropic','Groq','Ollama (Yerel)','Gemini','MiniMax'] },
-      { label: 'Sistem', items: ['Dosya Sistemi','Clipboard','Sistem Bildirimleri','Windows Search','PowerShell','Registry'] },
+      { label: 'İletişim', items: ['WhatsApp','Telegram','Discord','Gmail'] },
+      { label: 'Medya & Eğlence', items: ['YouTube Music','KazePlayer','Twitch','Kick'] },
+      { label: 'Üretkenlik', items: ['Takvim','Notlar','Hatırlatıcılar','Web Arama','Hava Durumu'] },
+      { label: 'Geliştirici & Sistem', items: ['GitHub','PowerShell / Terminal','Dosya Arama','Uygulama Başlatıcı','Ekran Görüşü','Self-Check'] },
+      { label: 'AI Modelleri', items: ['OpenAI','Anthropic (Claude)','Groq','Ollama (Yerel)','Gemini'] },
     ],
 
     // Testimonials
@@ -131,9 +165,9 @@ const T = {
     pricingH: 'Şeffaf ve sade planlar.',
     pricingSub: 'Fiyatlar 2026 Q4 lansmanında açıklanacak.',
     pricingTiers: [
-      { name:'Free', price:'Ücretsiz', period:'Çıkışta mevcut', desc:'Bireysel kullanım için temel AI işletim sistemi deneyimi.', feats:['Command OS (Alt+Space)','Günlük 5 web araması','3 Conversation Thread','Temel Clipboard Algılama','Proaktif Bildirimler'], cta:'2026 Q4' },
-      { name:'Pro',  price:'Yakında', period:'Fiyat açıklanacak · 2026 Q4', desc:'Night Shift, tam model özgürlüğü, sınırsız bellek ve Multi-Agent erişimi.', feats:['Night Shift 2.0','Sınırsız Model Özgürlüğü (BYOK)','Knowledge Base & RAG','Action Receipt tam loglama','Workflow Builder','Multi-Agent Swarm','Proaktif Zeka Tam Erişim'], cta:'2026 Q4', featured:true },
-      { name:'Team', price:'Yakında', period:'Kurumsal fiyatlandırma · 2026 Q4', desc:'Ekipler için ortak hafıza, yönetici paneli ve kurumsal güvenlik.', feats:["Tüm Pro özellikleri",'Paylaşılan Knowledge Base','Ekip Workflow\'ları','Admin Denetim Paneli','Cross-device Sync','SSO & Kurumsal güvenlik'], cta:'2026 Q4' },
+      { name:'Free', price:'Ücretsiz', period:'Çıkışta mevcut', desc:'Bireysel kullanım için temel AI işletim sistemi deneyimi.', feats:['Komut Çubuğu (Alt+Space)','Sohbet + Markdown & Kod','Günlük 5 web araması','Temel Clipboard Algılama','Proaktif Bildirimler'], cta:'2026 Q4' },
+      { name:'Pro',  price:'Yakında', period:'Fiyat açıklanacak · 2026 Q4', desc:'Night Shift, Canvas, tam model özgürlüğü, sınırsız bellek ve Multi-Agent erişimi.', feats:['Night Shift 2.0','Canvas / Artifact Çalışma Alanı','Sınırsız Model Özgürlüğü (BYOK)','Bilgi Tabanı & Hafıza','Action Receipt tam loglama','Rutinler (Workflow)','Multi-Agent Swarm','Proaktif Zeka Tam Erişim'], cta:'2026 Q4', featured:true },
+      { name:'Team', price:'Yakında', period:'Kurumsal fiyatlandırma · 2026 Q4', desc:'Ekipler için ortak hafıza, yönetici paneli ve kurumsal güvenlik.', feats:["Tüm Pro özellikleri",'Paylaşılan Bilgi Tabanı','Ekip Rutinleri','Admin Denetim Paneli','Cihazlar Arası Senkron','SSO & Kurumsal güvenlik'], cta:'2026 Q4' },
     ],
 
     // CTA
@@ -146,7 +180,7 @@ const T = {
     footerProduct: 'Ürün',
     footerDev: 'Geliştirici',
     footerCompany: 'Şirket',
-    footerLinks: { docs:'Dökümantasyon', api:'Eklenti API', mcp:'MCP Desteği', github:'GitHub', about:'Hakkımızda', blog:'Blog', privacy:'Gizlilik Politikası', terms:'Kullanım Şartları' },
+    footerLinks: { docs:'Dökümantasyon', api:'Eklenti API', github:'GitHub', about:'Hakkımızda', blog:'Blog', privacy:'Gizlilik Politikası', terms:'Kullanım Şartları' },
     footerCopy: 'Tüm hakları saklıdır.',
     footerBuilt: "Türkiye'de geliştiriliyor — Çıkış: 2026 Q4",
 
@@ -158,10 +192,10 @@ const T = {
     msLabel: 'Aktif Mod Seç',
     msTitle: 'Model Seçici',
     models: [
-      { name:'Private Mod', desc:'Llama 3.1 70B — Yerel, veri dışarı çıkmaz', badge:'PRIVATE' },
-      { name:'Fast Mod',    desc:'Groq / Llama — Anlık yanıt, düşük gecikme',  badge:'FAST'    },
-      { name:'Best Mod',    desc:'Claude 3.5 / GPT-4o — Maksimum akıl yürütme',badge:'BEST'    },
-      { name:'Cheap Mod',   desc:'Gemini Flash — Düşük maliyet, yüksek hacim', badge:'CHEAP'   },
+      { name:'Private Mod', desc:'Yerel Ollama — veri cihazdan çıkmaz',        badge:'PRIVATE' },
+      { name:'Fast Mod',    desc:'Groq · Llama 3.3 70B — anlık yanıt',          badge:'FAST'    },
+      { name:'Best Mod',    desc:'Claude Opus 4 / GPT — en güçlü akıl yürütme', badge:'BEST'    },
+      { name:'Cheap Mod',   desc:'Gemini Flash — düşük maliyet, yüksek hacim',  badge:'CHEAP'   },
     ],
     clipTitle: 'Clipboard Intelligence',
     clipDetected: 'Pano Algılandı · Python Kodu',
@@ -194,13 +228,23 @@ const T = {
     releaseLabel: 'Expected Launch:',
     releaseSuffix: 'Windows 10 / 11',
     demoSuggestions: 'Suggestions',
-    stat1n: 'Limitless', stat1l: 'Tools & Integrations',
-    stat2n: 'Freedom',   stat2l: 'Model Selection (BYOK)',
-    stat3n: 'Instant',   stat3l: 'Thought-speed Responses',
-    stat4n: '100%',      stat4l: 'In Your Control',
+    stat1n: '18+',      stat1l: 'Built-in Tools',
+    stat2n: 'Freedom',  stat2l: 'Model Selection (BYOK)',
+    stat3n: '100%',     stat3l: 'Local & Offline (Ollama)',
+    stat4n: 'TR + EN',  stat4l: 'Full Bilingual Support',
+    hlTag: 'HIGHLIGHTS',
+    hlH: ['More than ', 'an assistant', '.'],
+    hlCards: [
+      { title:'ARIA Intelligence', desc:'Structured intelligence on the web, WhatsApp and Telegram — in the cloud or entirely on-device.', href:'#ask-aria' },
+      { title:'Canvas', desc:'Build code and documents together in a live, editable canvas beside the chat.', href:'#canvas' },
+      { title:'Night Shift 2.0', desc:'Autonomous task chains run while you sleep; a report is ready by morning.', href:'#night-shift' },
+      { title:'Model Freedom', desc:'BYOK · Private/Fast/Best/Cheap modes · local Ollama in one keystroke.', href:'#model' },
+      { title:'Multi-Agent Swarm', desc:'The Router splits a task and dispatches it to specialist agents.', href:'#features' },
+      { title:'Proactive Intelligence', desc:'Analyzes context and acts before you even ask.', href:'#proactive' },
+    ],
     showcaseH: 'A Look at ARIA',
     showcaseSub: 'Dark, minimalist, and frictionless. Designed to stay out of your way and let you focus.',
-    showcaseTabs: ['Command Bar', 'Chat', 'Night Shift', 'Workflows', 'Widget'],
+    showcaseTabs: ['Command Bar', 'Chat', 'Night Shift', 'Routines', 'Widget'],
     manifestoH: 'Stop chatting.\nStart commanding.',
     manifestoP: "Chatbots answer questions. ARIA actually gets things done — reads files, writes code, calls APIs, runs overnight tasks, and hands you a report in the morning.",
     manifestoCta: 'See How It Works',
@@ -208,6 +252,19 @@ const T = {
     partnersBadge: 'PARTNERSHIP',
     partnersH: ['ARIA × ', 'KazePlayer', ' Integration'],
     partnersP: 'Our official partner KazePlay comes embedded inside ARIA. Users can access anime content directly within ARIA, without opening a separate browser or app. Thanks to the KazePlay × ARIA integration, the platform works seamlessly inside ARIA — the first concrete product of our partnership.',
+
+    // Ask ARIA — Intelligence
+    aiOver: 'INTRODUCING',
+    aiTitle: 'ARIA Intelligence',
+    aiSub: 'Intelligence, one shortcut away. On a web page, in WhatsApp, in Telegram — ARIA understands, structures, and answers over whatever you select. In the cloud, or entirely on your device.',
+    aiModeCloud: 'Cloud · Groq',
+    aiModeLocal: 'On-device · Ollama',
+    aiShotCaption: 'Ask ARIA — a structured summary on any web page',
+    aiCards: [
+      { title: 'Structured intelligence on the web', desc: 'Ask ARIA on any page. The LLM turns content into a structured card — Overview, Key Facts, and a Timeline. Not raw text, meaning.' },
+      { title: 'On top of WhatsApp', desc: 'Reads the chat by sender, summarizes unread messages, drafts a reply. You approve, ARIA sends.' },
+      { title: 'On top of Telegram', desc: 'The same shared Ask ARIA layer works in Telegram too. Manage conversations without losing context.' },
+    ],
 
     tBlock1Tag: 'Transparency',
     tBlock1H: ['See every ', 'step', '.'],
@@ -229,6 +286,12 @@ const T = {
     tBlock5H: ['Not one bot. ', 'A specialist team', '.'],
     tBlock5P: 'The Router Agent breaks complex tasks into subtasks and dispatches them to Coder, Researcher, and Writer agents. Manage large projects with team-level discipline.',
     tBlock5Pills: ['Router Agent','Coder Agent','Researcher Agent','Writer Agent'],
+    tBlock6Tag: 'Canvas · New',
+    tBlock6H: ['Not a bubble. ', 'A workspace', '.'],
+    tBlock6P: "When ARIA produces a long block of code or a document, it doesn't cram it into a chat bubble — it opens a live, editable canvas beside the chat. Say 'change this function' and it updates in place. Version history, undo, and one-click save to disk included.",
+    tBlock6Pills: ['Live Canvas','In-place Revise','Version History','Save to Disk'],
+    canvasVisualTitle: 'Canvas — todo_list.py',
+    canvasRevisePlaceholder: 'Ask ARIA to revise…',
 
     proTag: 'Proactive Intelligence',
     proH: ['ARIA notices things ', 'before you do', '.'],
@@ -242,14 +305,15 @@ const T = {
       { title: 'Contextual Model Selection', desc: 'Short note? Cheap mode. Deep architecture review? Best mode. Switched automatically.' },
     ],
 
-    intTag: 'Integrations',
-    intH: ['Talks to ', 'every tool', '.'],
-    intP: 'ARIA connects directly to the tools you use every day. Manage everything from a single window, without switching tabs.',
+    intTag: 'Connected World',
+    intH: ['Your whole world, ', 'one window', '.'],
+    intP: 'From messaging to media, code to models, ARIA connects directly to the tools you use every day. Manage everything from inside ARIA — no tab-hopping, no separate apps.',
     intCats: [
-      { label: 'Developer', items: ['GitHub','VS Code','Terminal','Docker','GitLab','Postman'] },
-      { label: 'Productivity', items: ['Gmail','Google Calendar','Notion','Obsidian','Slack','Linear'] },
-      { label: 'AI & Models', items: ['OpenAI','Anthropic','Groq','Ollama (Local)','Gemini','MiniMax'] },
-      { label: 'System', items: ['File System','Clipboard','System Notifications','Windows Search','PowerShell','Registry'] },
+      { label: 'Communication', items: ['WhatsApp','Telegram','Discord','Gmail'] },
+      { label: 'Media & Fun', items: ['YouTube Music','KazePlayer','Twitch','Kick'] },
+      { label: 'Productivity', items: ['Calendar','Notes','Reminders','Web Search','Weather'] },
+      { label: 'Developer & System', items: ['GitHub','PowerShell / Terminal','File Search','App Launcher','Screen Vision','Self-Check'] },
+      { label: 'AI Models', items: ['OpenAI','Anthropic (Claude)','Groq','Ollama (Local)','Gemini'] },
     ],
 
     tmonLabel: 'Telegram Closed Beta · User Reviews',
@@ -281,9 +345,9 @@ const T = {
     pricingH: 'Simple, transparent pricing.',
     pricingSub: 'Pricing will be announced at Q4 2026 launch.',
     pricingTiers: [
-      { name:'Free', price:'Free',  period:'Available at launch', desc:'The core AI OS experience for individual users.', feats:['Command OS (Alt+Space)','5 web searches/day','3 Conversation Threads','Basic Clipboard Detection','Proactive Alerts'], cta:'Q4 2026' },
-      { name:'Pro',  price:'Soon',  period:'Pricing TBA · Q4 2026', desc:'Night Shift, full model freedom, unlimited memory, Multi-Agent access.', feats:['Night Shift 2.0','Unlimited Model Freedom (BYOK)','Knowledge Base & RAG','Full Action Receipt logging','Workflow Builder','Multi-Agent Swarm','Full Proactive Intelligence'], cta:'Q4 2026', featured:true },
-      { name:'Team', price:'Soon',  period:'Enterprise pricing · Q4 2026', desc:'Shared memory, admin panel, and enterprise-grade security for teams.', feats:['All Pro features','Shared Knowledge Base','Team Workflows','Admin Dashboard','Cross-device Sync','SSO & Enterprise Security'], cta:'Q4 2026' },
+      { name:'Free', price:'Free',  period:'Available at launch', desc:'The core AI OS experience for individual users.', feats:['Command Bar (Alt+Space)','Chat + Markdown & Code','5 web searches/day','Basic Clipboard Detection','Proactive Alerts'], cta:'Q4 2026' },
+      { name:'Pro',  price:'Soon',  period:'Pricing TBA · Q4 2026', desc:'Night Shift, Canvas, full model freedom, unlimited memory, Multi-Agent access.', feats:['Night Shift 2.0','Canvas / Artifact Workspace','Unlimited Model Freedom (BYOK)','Knowledge Base & Memory','Full Action Receipt logging','Routines (Workflows)','Multi-Agent Swarm','Full Proactive Intelligence'], cta:'Q4 2026', featured:true },
+      { name:'Team', price:'Soon',  period:'Enterprise pricing · Q4 2026', desc:'Shared memory, admin panel, and enterprise-grade security for teams.', feats:['All Pro features','Shared Knowledge Base','Team Routines','Admin Dashboard','Cross-device Sync','SSO & Enterprise Security'], cta:'Q4 2026' },
     ],
 
     ctaBadge: 'Q4 2026 Launch',
@@ -294,7 +358,7 @@ const T = {
     footerProduct: 'Product',
     footerDev: 'Developer',
     footerCompany: 'Company',
-    footerLinks: { docs:'Documentation', api:'Plugin API', mcp:'MCP Support', github:'GitHub', about:'About', blog:'Blog', privacy:'Privacy Policy', terms:'Terms of Service' },
+    footerLinks: { docs:'Documentation', api:'Plugin API', github:'GitHub', about:'About', blog:'Blog', privacy:'Privacy Policy', terms:'Terms of Service' },
     footerCopy: 'All rights reserved.',
     footerBuilt: 'Built in Turkey — Launching Q4 2026',
 
@@ -305,10 +369,10 @@ const T = {
     msLabel: 'Select Active Mode',
     msTitle: 'Model Selector',
     models: [
-      { name:'Private Mode', desc:'Llama 3.1 70B — Local, zero data egress', badge:'PRIVATE' },
-      { name:'Fast Mode',    desc:'Groq / Llama — Instant responses, low latency', badge:'FAST' },
-      { name:'Best Mode',    desc:'Claude 3.5 / GPT-4o — Maximum reasoning', badge:'BEST' },
-      { name:'Cheap Mode',   desc:'Gemini Flash — Low cost, high volume', badge:'CHEAP' },
+      { name:'Private Mode', desc:'Local Ollama — data never leaves your device', badge:'PRIVATE' },
+      { name:'Fast Mode',    desc:'Groq · Llama 3.3 70B — instant responses', badge:'FAST' },
+      { name:'Best Mode',    desc:'Claude Opus 4 / GPT — maximum reasoning', badge:'BEST' },
+      { name:'Cheap Mode',   desc:'Gemini Flash — low cost, high volume', badge:'CHEAP' },
     ],
     clipTitle: 'Clipboard Intelligence',
     clipDetected: 'Clipboard Detected · Python Code',
@@ -387,11 +451,11 @@ function Hero() {
 
   const demoItems = [
     { Icon: Moon,           title: lang==='tr'?'Night Shift 2.0 başlat'     :'Start Night Shift 2.0',    sub: lang==='tr'?'Otonom görev kuyruğu — gece çalışır'           :'Autonomous task queue — runs overnight',        badge:'Night Shift', color:'#0f0f1a' },
-    { Icon: Database,       title: lang==='tr'?"Knowledge Base'i güncelle"   :'Update Knowledge Base',    sub: lang==='tr'?'Proje dosyalarını RAG hafızasına ekle'          :'Index project files into RAG memory',           badge:'Memory',      color:'#0f1a0f' },
+    { Icon: PanelRight,     title: lang==='tr'?'Tuvalde kod üret'            :'Build code in Canvas',     sub: lang==='tr'?'Düzenlenebilir tuvalde yaz, yerinde revize et'   :'Write in an editable canvas, revise in place',  badge:'Canvas',      color:'#0f0f1a' },
     { Icon: GitPullRequest, title: lang==='tr'?'GitHub PR analiz et'         :'Analyze GitHub PR',        sub: lang==='tr'?'Coder Agent ile kod incelemesi yap'            :'Run code review with Coder Agent',              badge:'Code',        color:'#1a0f0f' },
     { Icon: Clipboard,      title: lang==='tr'?'Pano içeriğini analiz et'    :'Analyze clipboard',        sub: lang==='tr'?'Kopyalanan metni veya kodu anında işle'         :'Instantly process copied text or code',         badge:'Clipboard',   color:'#111111' },
-    { Icon: Shuffle,        title: lang==='tr'?'Model değiştir → Private'    :'Switch model → Private',   sub: lang==='tr'?'Yerel Llama modeline geç, veri dışarı çıkmaz'   :'Use local Llama, zero data egress',             badge:'Model',       color:'#1a180f' },
-    { Icon: Mail,           title: lang==='tr'?'Gmail özeti çıkar'            :'Summarize Gmail',          sub: lang==='tr'?'Son 24 saatin önemli e-postalarını listele'     :'List key emails from the last 24 hours',        badge:'Workflow',    color:'#0f1a1a' },
+    { Icon: Shuffle,        title: lang==='tr'?'Model değiştir → Private'    :'Switch model → Private',   sub: lang==='tr'?'Yerel Ollama modeline geç, veri dışarı çıkmaz'  :'Use local Ollama, zero data egress',            badge:'Model',       color:'#1a180f' },
+    { Icon: MessageCircle,  title: lang==='tr'?'WhatsApp sohbetini özetle'   :'Summarize WhatsApp chat',  sub: lang==='tr'?'Okunmamış mesajları tek bakışta yakala'         :'Catch up on unread messages at a glance',       badge:'WhatsApp',    color:'#0f1a14' },
   ];
 
   useEffect(() => {
@@ -467,6 +531,37 @@ function Stats() {
         ))}
       </div>
     </div>
+  );
+}
+
+// ── Highlights (Apple-stili bento) ────────────────────────────────────────────
+const HL_ICONS = [Sparkles, PanelRight, Moon, Shuffle, Network, BrainCircuit];
+function HighlightsSection() {
+  const { t } = useLang();
+  return (
+    <section className="hl-section" id="highlights">
+      <div className="wrap">
+        <div className="hl-head fade-up">
+          <div className="feature-tag">{t.hlTag}</div>
+          <h2>{t.hlH[0]}<em>{t.hlH[1]}</em>{t.hlH[2]}</h2>
+        </div>
+        <div className="hl-bento">
+          {t.hlCards.map((c, i) => {
+            const IC = HL_ICONS[i];
+            return (
+              <a key={i} href={c.href} className={`hl-card fade-up hl-c${i}`} style={{transitionDelay:(i*0.06)+'s'}}>
+                <div className="hl-card-icon"><IC size={22} /></div>
+                <div className="hl-card-body">
+                  <h3 className="hl-card-title">{c.title}</h3>
+                  <p className="hl-card-desc">{c.desc}</p>
+                </div>
+                <span className="hl-card-arrow"><ArrowRight size={16} /></span>
+              </a>
+            );
+          })}
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -562,23 +657,29 @@ function PartnersSection() {
 function FeatureScroll() {
   const { t, lang } = useLang();
   const chips = [
-    { Icon: Terminal,      text: 'Alt+Space Command OS' },
+    { Icon: Terminal,      text: lang==='tr'?'Alt+Space Komut Çubuğu':'Alt+Space Command Bar' },
+    { Icon: PanelRight,    text: 'Canvas / Artifact' },
     { Icon: Moon,          text: 'Night Shift 2.0' },
     { Icon: BrainCircuit,  text: lang==='tr'?'Proaktif Zeka':'Proactive Intelligence' },
-    { Icon: UserCog,       text: lang==='tr'?'Otonom Profil':'Autonomous Profile' },
     { Icon: Clipboard,     text: 'Clipboard Intelligence' },
     { Icon: Shuffle,       text: lang==='tr'?'Model Özgürlüğü':'Model Freedom' },
-    { Icon: Database,      text: 'Knowledge Base & RAG' },
+    { Icon: MessageCircle, text: 'WhatsApp' },
+    { Icon: Send,          text: 'Telegram' },
+    { Icon: Gamepad2,      text: 'Discord' },
+    { Icon: Radio,         text: lang==='tr'?'Canlı Yayın (Twitch/Kick)':'Live (Twitch/Kick)' },
+    { Icon: Music2,        text: 'YouTube Music' },
+    { Icon: Tv,            text: 'KazePlayer' },
     { Icon: Network,       text: 'Multi-Agent Swarm' },
     { Icon: FileText,      text: 'Action Receipt' },
+    { Icon: HeartPulse,    text: 'Self-Check' },
+    { Icon: Eye,           text: lang==='tr'?'Ekran Görüşü':'Screen Vision' },
+    { Icon: CalendarDays,  text: lang==='tr'?'Takvim':'Calendar' },
+    { Icon: Bell,          text: lang==='tr'?'Hatırlatıcılar':'Reminders' },
+    { Icon: BookOpen,      text: lang==='tr'?'Notlar':'Notes' },
+    { Icon: Repeat2,       text: lang==='tr'?'Rutinler':'Routines' },
+    { Icon: Search,        text: lang==='tr'?'Web Arama & Özet':'Web Search & Summary' },
     { Icon: ShieldCheck,   text: lang==='tr'?'Gizlilik':'Privacy' },
-    { Icon: Workflow,      text: 'Workflow Builder' },
-    { Icon: Search,        text: lang==='tr'?'Web Arama':'Web Search' },
-    { Icon: Link2,         text: lang==='tr'?'Entegrasyonlar':'Integrations' },
     { Icon: GitBranch,     text: 'GitHub & Gmail' },
-    { Icon: Mic,           text: lang==='tr'?'Sesli Komut':'Voice Command' },
-    { Icon: Bot,           text: lang==='tr'?'Coder Agent':'Coder Agent' },
-    { Icon: Repeat2,       text: lang==='tr'?'Akıllı Zamanlama':'Smart Scheduling' },
   ];
   const doubled = [...chips, ...chips];
   return (
@@ -602,7 +703,7 @@ function FeatureScroll() {
 function ActionReceiptVisual() {
   const { t } = useLang();
   const rows = [
-    { Icon:Cpu,         label:t.lang==='tr'?'Model Seçimi':'Model', val:'claude-3.5-sonnet', success:true,  active:true  },
+    { Icon:Cpu,         label:t.lang==='tr'?'Model Seçimi':'Model', val:'claude-opus-4', success:true,  active:true  },
     { Icon:FolderOpen,  label:t.lang==='tr'?'Okunan Dosya':'File',  val:'core/router.py (1.2kb)',            active:false },
     { Icon:Globe,       label:t.lang==='tr'?'Web İsteği':'Request', val:'api.github.com → 200',             active:false },
     { Icon:FileText,    label:t.lang==='tr'?'Çıktı':'Output',       val:'847 tokens · 1.2s',                active:false },
@@ -717,6 +818,74 @@ function MultiAgentVisual() {
   );
 }
 
+// ── Ask ARIA — "ARIA Intelligence" (Apple Intelligence tarzı) ─────────────────
+const AI_CARD_ICONS = [Globe, MessageCircle, Send];
+function AriaIntelligenceSection() {
+  const { t } = useLang();
+  return (
+    <section className="ai-section" id="ask-aria">
+      <div className="ai-aura" />
+      <div className="wrap" style={{position:'relative',zIndex:1}}>
+        <div className="ai-head fade-up">
+          <div className="ai-over"><Sparkles size={13} style={{marginRight:6}} />{t.aiOver}</div>
+          <h2 className="ai-gradient-text">{t.aiTitle}</h2>
+          <p className="ai-sub">{t.aiSub}</p>
+          <div className="ai-modes">
+            <span className="ai-mode"><Server size={13} />{t.aiModeCloud}</span>
+            <span className="ai-mode"><ShieldCheck size={13} />{t.aiModeLocal}</span>
+          </div>
+        </div>
+
+        <div className="ai-showcase fade-up delay-2">
+          <div className="ai-window">
+            <img src={imgWebAssistant} alt="ARIA Intelligence — Ask ARIA" loading="lazy" />
+          </div>
+        </div>
+        <div className="ai-caption fade-up">{t.aiShotCaption}</div>
+
+        <div className="ai-pillars">
+          {t.aiCards.map((c, i) => {
+            const IC = AI_CARD_ICONS[i];
+            return (
+              <div key={i} className="ai-pillar fade-up" style={{transitionDelay:(i*0.1)+'s'}}>
+                <div className={`ai-pillar-icon ai-pi-${i}`}><IC size={20} /></div>
+                <h3 className="ai-pillar-title">{c.title}</h3>
+                <p className="ai-pillar-desc">{c.desc}</p>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ── Canvas Section (gerçek ekran görüntüsü) ───────────────────────────────────
+function CanvasSection() {
+  const { t } = useLang();
+  const canvasShot = import.meta.env.BASE_URL + 'aria_canvas.png';
+  return (
+    <section className="canvas-section" id="canvas">
+      <div className="wrap">
+        <div className="canvas-section-header fade-up">
+          <div className="feature-tag canvas-tag">{t.tBlock6Tag}</div>
+          <h2>{t.tBlock6H[0]}<em>{t.tBlock6H[1]}</em>{t.tBlock6H[2]}</h2>
+          <p>{t.tBlock6P}</p>
+          <div className="canvas-section-pills">
+            {t.tBlock6Pills.map((p, j) => <span key={j} className="feature-pill">{p}</span>)}
+          </div>
+        </div>
+        <div className="canvas-shot-wrapper fade-up delay-2">
+          <div className="canvas-shot-window">
+            <img src={canvasShot} alt="ARIA Canvas / Artifact" loading="lazy" />
+          </div>
+          <div className="canvas-shot-glow" />
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // ── Feature Blocks ────────────────────────────────────────────────────────────
 function FeatureBlocks() {
   const { t } = useLang();
@@ -776,7 +945,7 @@ function ProactiveSection() {
 }
 
 // ── Integrations ──────────────────────────────────────────────────────────────
-const CAT_ICONS = [Code2, Workflow, BrainCircuit, PocketKnife];
+const CAT_ICONS = [MessagesSquare, MonitorPlay, CalendarDays, Code2, BrainCircuit];
 function IntegrationsSection() {
   const { t } = useLang();
   return (
@@ -800,54 +969,6 @@ function IntegrationsSection() {
                   {cat.items.map((item, j) => (
                     <div key={j} className="int-item">{item}</div>
                   ))}
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ── Testimonials ──────────────────────────────────────────────────────────────
-const TESTIMONIALS_TR = [
-  { quote: 'Night Shift özelliği olmasa inanmam zor olurdu. Gece 02\'de kapatıp yatıyorum, sabah uyandığımda rakip analizi hazır. Bu kadar basit anlatayım.', name: 'Burak A.', role: 'Backend Developer · İstanbul' },
-  { quote: 'Sıradan bir kullanıcıyım ama ARIA sayesinde bilgisayarıma hükmediyorum. Dosya bulma ve internetten araştırma yapma hızı inanılmaz. Adeta kişisel asistanım oldu.', name: 'Zeynep K.', role: 'Üniversite Öğrencisi · Ankara' },
-  { quote: 'BYOK desteği oyun değiştirici. Anthropic anahtarımı ekledim, şirkete ait verileri yerel Ollama\'ya veriyorum. Güvenlik ekibi de mutlu, ben de.', name: 'Mert D.', role: 'CTO · SaaS Startup, İzmir' },
-  { quote: 'Action Receipt olmasaydı arka planda ne döndüğünü anlamazdım. Her şeyin şeffaf olması, projelerimde kodun nasıl çalıştığını anlamamı çok hızlandırdı.', name: 'Selin A.', role: 'Yazılım Mühendisliği Öğrencisi · ODTÜ' },
-  { quote: 'Multi-agent swarm\'ı test ettim: "şu proje için teknik döküman hazırla" dedim. 18 dakikada 12 sayfalık döküman çıktı. Normalde bunu yazmak günümü alırdı.', name: 'Emre Y.', role: 'Lead Engineer · Fintech' },
-  { quote: 'Türkçe komutlara verdiği yanıtların kalitesi beni şaşırttı. AI araçlarının çoğunda Türkçe "idare eder" seviyesindeyken ARIA sanki ana dili gibi konuşuyor.', name: 'Ayşe T.', role: 'AI Meraklısı & İçerik Üreticisi' },
-];
-const TESTIMONIALS_EN = [
-  { quote: "Night Shift is the only reason I leave my laptop on overnight now. Queued 5 research tasks before bed, woke up to finished reports. My mornings are completely different.", name: 'Marcus W.', role: 'Senior Software Engineer · Berlin' },
-  { quote: "The model switching is a lifesaver for my university projects. I use Fast mode for quick lookups, and Best mode when I need Claude-level reasoning for complex assignments.", name: 'Sarah C.', role: 'Computer Science Student · Stanford' },
-  { quote: "I was skeptical about the clipboard detection. Two weeks in — I genuinely miss it when I'm on another machine. It just becomes part of how you code.", name: "Ryan O'B.", role: 'Full-Stack Developer · Dublin' },
-  { quote: "The Action Receipt transparency feature alone sets this apart from every other AI tool I've used. I know exactly what's happening under the hood at all times.", name: 'Alex R.', role: 'DevOps Engineer · Madrid' },
-  { quote: "We tested this on a weekend project — shared Knowledge Base is the real deal. My friend and I use the same context without having to re-explain the codebase.", name: 'Lena M.', role: 'Indie Hacker & AI Enthusiast' },
-  { quote: "Ran a multi-agent research task on a competitor landscape. Router split it into 6 subtasks, agents ran in parallel. Got back a structured report in under 20 minutes.", name: 'James P.', role: 'AI Researcher · Singapore' },
-];
-const T_ICONS_VISUAL = [Moon, Clipboard, ShieldCheck, Eye, Code2, Search, Database, Shuffle, Network, Zap, FileText, Globe];
-function Testimonials() {
-  const { t, lang } = useLang();
-  const data = lang === 'tr' ? TESTIMONIALS_TR : TESTIMONIALS_EN;
-  return (
-    <section className="testimonials">
-      <div className="wrap">
-        <div className="section-label">{t.tmonLabel}</div>
-        <h2>{t.tmonH}</h2>
-        <div className="testimonials-grid">
-          {data.map((item, i) => {
-            const IC = T_ICONS_VISUAL[i % T_ICONS_VISUAL.length];
-            return (
-              <div className="testimonial-card fade-up" key={i} style={{transitionDelay:(i%3)*0.1+'s'}}>
-                <p className="t-quote">"{item.quote}"</p>
-                <div className="t-author">
-                  <div className="t-avatar"><IC size={15} color="rgba(255,255,255,0.6)" /></div>
-                  <div>
-                    <div className="t-name">{item.name}</div>
-                    <div className="t-role">{item.role}</div>
-                  </div>
                 </div>
               </div>
             );
@@ -998,7 +1119,6 @@ function Footer() {
             <h5>{t.footerDev}</h5>
             <a href="#">{t.footerLinks.docs}</a>
             <a href="#">{t.footerLinks.api}</a>
-            <a href="#">{t.footerLinks.mcp}</a>
             <a href="#">{t.footerLinks.github}</a>
           </div>
           <div className="footer-col">
@@ -1042,14 +1162,16 @@ export default function App() {
       <main>
         <Hero />
         <Stats />
+        <HighlightsSection />
         <Showcase />
+        <AriaIntelligenceSection />
+        <CanvasSection />
         <Manifesto />
         <PartnersSection />
         <FeatureScroll />
         <FeatureBlocks />
         <ProactiveSection />
         <IntegrationsSection />
-        <Testimonials />
         <WorkflowSection />
         <PrivacySection />
         <Pricing />
